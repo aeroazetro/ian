@@ -201,7 +201,7 @@ function selectSubject(subject) {
     });
 
     // Render Categories
-    const diffOrder = ['Foundation', 'Intermediate', 'Elite', 'Elite+', 'Boss'];
+    const diffOrder = ['Foundation', 'Intermediate', 'Elite'];
 
     diffOrder.forEach(diff => {
         const mods = modulesByDiff[diff];
@@ -216,8 +216,6 @@ function selectSubject(subject) {
         let desc = "Build your core understanding.";
         if (diff === 'Intermediate') desc = "Apply concepts to standard problems.";
         if (diff === 'Elite') desc = "Complex synthesis and proofs.";
-        if (diff === 'Elite+') desc = "Advanced coordinate geometry and invariants.";
-        if (diff === 'Boss') desc = "Mastery level: Parameters, Loci, and Competition problems.";
 
         catHeader.innerHTML = `
             <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.25rem;">${diff} Level</h3>
