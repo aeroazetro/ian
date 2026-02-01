@@ -566,10 +566,10 @@ window.questions = {
                 },
                 {
                     id: 5,
-                    question: "Find the equation of the line that is the reflection of $y = 2x + 3$ across the x-axis.",
-                    options: ["$y = -2x - 3$", "$y = 2x - 3$", "$y = -2x + 3$", "$x = 2y + 3$"],
+                    question: "Find the coordinates of the foot of the perpendicular from $(1, 2)$ to the line $x + y = 5$.",
+                    options: ["$(2, 3)$", "$(3, 2)$", "$(2.5, 2.5)$", "$(1, 4)$"],
                     correctAnswer: 0,
-                    solution: "Reflecting across the x-axis negates all y-values: $-y = 2x + 3 \\rightarrow y = -2x - 3$."
+                    solution: "Slope of $x+y=5$ is $-1$. Perp slope is $1$. Line through $(1,2)$ with slope 1: $y-2=1(x-1) \\rightarrow y=x+1$. Intersect $y=x+1$ and $x+y=5$: $x+(x+1)=5 \\rightarrow 2x=4 \\rightarrow x=2, y=3$."
                 },
                 {
                     id: 6,
@@ -587,10 +587,10 @@ window.questions = {
                 },
                 {
                     id: 8,
-                    question: "Which of the following creates a system of equations with **no solution** when paired with $3x - y = 5$?",
-                    options: ["$6x - 2y = 10$", "$6x - 2y = 7$", "$-3x + y = 5$", "$y = 3x - 5$"],
-                    correctAnswer: 1,
-                    solution: "No solution means parallel distinct lines (same slope, different intercept). $3x-y=5 \\rightarrow y=3x-5$. $6x-2y=7 \\rightarrow y=3x-3.5$. Same slope 3, different intercepts, so no solution."
+                    question: "The line passing through $(2, 3)$ and $(6, k)$ is perpendicular to the line passing through $(2, 3)$ and $(k, 7)$. Find the value of $k$.",
+                    options: ["2.5", "5", "3", "4.5"],
+                    correctAnswer: 0,
+                    solution: "Slope $m_1 = \\frac{k-3}{6-2} = \\frac{k-3}{4}$. Slope $m_2 = \\frac{7-3}{k-2} = \\frac{4}{k-2}$. Product $m_1 m_2 = -1$: $\\frac{k-3}{4} \\cdot \\frac{4}{k-2} = -1 \\Rightarrow \\frac{k-3}{k-2} = -1 \\Rightarrow k-3 = -k+2 \\Rightarrow 2k=5 \\Rightarrow k=2.5$."
                 },
                 {
                     id: 9,
