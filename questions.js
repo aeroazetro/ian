@@ -80,7 +80,7 @@ window.questions = {
         },
 
         module2: {
-            title: "Module 2",
+            title: "Module 1",
             subtitle: "Application & Analysis",
             description: "Find equations of parallel/perpendicular lines; intercepts; collinearity.",
             difficulty: "Intermediate",
@@ -143,10 +143,10 @@ window.questions = {
                 },
                 {
                     id: 9,
-                    question: "Are the points A(1, 2), B(3, 8), and C(5, 14) collinear?",
-                    options: ["Yes", "No"],
-                    correctAnswer: 0,
-                    solution: "$m_{AB} = \\frac{8-2}{3-1} = 3$. $m_{BC} = \\frac{14-8}{5-3} = 3$. Same slope and they share point B, so they are collinear."
+                    question: "Find the sum of the x-intercept and y-intercept of the line $2x + 5y = 20$.",
+                    options: ["10", "14", "4", "2"],
+                    correctAnswer: 1,
+                    solution: "x-intercept ($y=0$): $2x=20 \\rightarrow x=10$. y-intercept ($x=0$): $5y=20 \\rightarrow y=4$. Sum: $10+4=14$."
                 },
                 {
                     id: 10,
@@ -158,8 +158,380 @@ window.questions = {
             ]
         },
 
-        module3: {
+        intermediate1: {
+            title: "Module 2",
+            subtitle: "Classifying Segment Pairs",
+            description: "Compute slopes of segments AB and CD, then decide: parallel, perpendicular, or neither.",
+            difficulty: "Intermediate",
+            questions: [
+                {
+                    id: 1,
+                    question: "Segment AB: $A(\\tfrac{1}{2},\\tfrac{3}{2})$, $B(\\tfrac{5}{2},\\tfrac{7}{2})$;  Segment CD: $C(-\\tfrac{1}{2},\\tfrac{1}{2})$, $D(\\tfrac{3}{2},\\tfrac{5}{2})$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "Compute slopes.\\n\\n$\\displaystyle m_{AB}=\\frac{\\frac{7}{2}-\\frac{3}{2}}{\\frac{5}{2}-\\frac{1}{2}}=\\frac{2}{2}=1$.\\n$\\displaystyle m_{CD}=\\frac{\\frac{5}{2}-\\frac{1}{2}}{\\frac{3}{2}-(-\\frac{1}{2})}=\\frac{2}{2}=1$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 2,
+                    question: "Segment AB: $A(1,-2)$, $B(3,4)$;  Segment CD: $C(0,6)$, $D(2,0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{4-(-2)}{3-1}=\\frac{6}{2}=3$.\\n$\\displaystyle m_{CD}=\\frac{0-6}{2-0}=\\frac{-6}{2}=-3$.\\n\\nThey are negatives, but not negative reciprocals: $3\\cdot(-3)=-9\\neq-1$. So **Neither**."
+                },
+                {
+                    id: 3,
+                    question: "Segment AB: $A(-2,4)$, $B(4,-2)$;  Segment CD: $C(1,1)$, $D(7,-5)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-2-4}{4-(-2)}=\\frac{-6}{6}=-1$.\\n$\\displaystyle m_{CD}=\\frac{-5-1}{7-1}=\\frac{-6}{6}=-1$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 4,
+                    question: "Segment AB: $A(2,1)$, $B(2,9)$;  Segment CD: $C(-3,4)$, $D(5,4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\overline{AB}$ is vertical ($x=2$) so its slope is undefined.\\n$\\overline{CD}$ is horizontal ($y=4$) so its slope is $0$.\\n\\nVertical and horizontal lines meet at $90^\\circ$ $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 5,
+                    question: "Segment AB: $A(-6,2)$, $B(-2,10)$;  Segment CD: $C(3,1)$, $D(9,4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{10-2}{-2-(-6)}=\\frac{8}{4}=2$.\\n$\\displaystyle m_{CD}=\\frac{4-1}{9-3}=\\frac{3}{6}=\\frac{1}{2}$.\\n\\nNot equal (not parallel). Product $2\\cdot\\tfrac{1}{2}=1\\neq -1$ (not perpendicular). So **Neither**."
+                },
+                {
+                    id: 6,
+                    question: "Segment AB: $A(-1,5)$, $B(5,1)$;  Segment CD: $C(2,-3)$, $D(4,0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB}=\\frac{1-5}{5-(-1)}=\\frac{-4}{6}=-\\frac{2}{3}$.\\n$\\displaystyle m_{CD}=\\frac{0-(-3)}{4-2}=\\frac{3}{2}$.\\n\\n$\\left(-\\frac{2}{3}\\right)\\left(\\frac{3}{2}\\right)=-1$ so slopes are negative reciprocals $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 7,
+                    question: "Segment AB: $A(0,0)$, $B(8,6)$;  Segment CD: $C(-3,2)$, $D(1,5)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{6-0}{8-0}=\\frac{6}{8}=\\frac{3}{4}$.\\n$\\displaystyle m_{CD}=\\frac{5-2}{1-(-3)}=\\frac{3}{4}$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 8,
+                    question: "Segment AB: $A(4,-1)$, $B(0,3)$;  Segment CD: $C(-2,6)$, $D(6,2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{3-(-1)}{0-4}=\\frac{4}{-4}=-1$.\\n$\\displaystyle m_{CD}=\\frac{2-6}{6-(-2)}=\\frac{-4}{8}=-\\frac{1}{2}$.\\n\\nNot equal. Product $(-1)\\left(-\\tfrac{1}{2}\\right)=\\tfrac{1}{2}\\neq-1$. So **Neither**."
+                },
+                {
+                    id: 9,
+                    question: "Segment AB: $A(4,-1)$, $B(0,3)$;  Segment CD: $C(-2,6)$, $D(2,2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{3-(-1)}{0-4}=\\frac{4}{-4}=-1$.\\n$\\displaystyle m_{CD}=\\frac{2-6}{2-(-2)}=\\frac{-4}{4}=-1$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 10,
+                    question: "Segment AB: $A(-4,-2)$, $B(2,1)$;  Segment CD: $C(1,7)$, $D(3,3)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB}=\\frac{1-(-2)}{2-(-4)}=\\frac{3}{6}=\\frac{1}{2}$.\\n$\\displaystyle m_{CD}=\\frac{3-7}{3-1}=\\frac{-4}{2}=-2$.\\n\\n$\\left(\\frac{1}{2}\\right)(-2)=-1$ so they are **Perpendicular**."
+                },
+                {
+                    id: 11,
+                    question: "Segment AB: $A(-3,0)$, $B(5,0)$;  Segment CD: $C(2,-4)$, $D(2,9)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\overline{AB}$ is horizontal ($y=0$) so slope $0$.\\n$\\overline{CD}$ is vertical ($x=2$) so slope undefined.\\n\\nHorizontal $\\perp$ vertical $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 12,
+                    question: "Segment AB: $A(\\tfrac{3}{2},-\\tfrac{1}{2})$, $B(\\tfrac{9}{2},\\tfrac{5}{2})$;  Segment CD: $C(-1,3)$, $D(2,1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{\\frac{5}{2}-(-\\frac{1}{2})}{\\frac{9}{2}-\\frac{3}{2}}=\\frac{3}{3}=1$.\\n$\\displaystyle m_{CD}=\\frac{1-3}{2-(-1)}=\\frac{-2}{3}=-\\frac{2}{3}$.\\n\\nNot equal; product $1\\cdot(-\\tfrac{2}{3})=-\\tfrac{2}{3}\\neq-1$. So **Neither**."
+                }
+            ]
+        },
+
+        intermediate2: {
             title: "Module 3",
+            subtitle: "Trickier Coordinates & Mixed Forms",
+            description: "More challenging pairs (fractions, negatives, and careful slope checks).",
+            difficulty: "Intermediate",
+            questions: [
+                {
+                    id: 1,
+                    question: "Segment AB: $A(-1,2)$, $B(7,-2)$;  Segment CD: $C(3,5)$, $D(5,1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-2-2}{7-(-1)}=\\frac{-4}{8}=-\\frac{1}{2}$.\\n$\\displaystyle m_{CD}=\\frac{1-5}{5-3}=\\frac{-4}{2}=-2$.\\n\\nNot equal and not negative reciprocals (product $=1$). So **Neither**."
+                },
+                {
+                    id: 2,
+                    question: "Segment AB: $A(-1,2)$, $B(7,-2)$;  Segment CD: $C(3,5)$, $D(11,1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-2-2}{7-(-1)}=\\frac{-4}{8}=-\\frac{1}{2}$.\\n$\\displaystyle m_{CD}=\\frac{1-5}{11-3}=\\frac{-4}{8}=-\\frac{1}{2}$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 3,
+                    question: "Segment AB: $A(2,8)$, $B(6,0)$;  Segment CD: $C(-3,1)$, $D(1,3)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB}=\\frac{0-8}{6-2}=\\frac{-8}{4}=-2$.\\n$\\displaystyle m_{CD}=\\frac{3-1}{1-(-3)}=\\frac{2}{4}=\\frac{1}{2}$.\\n\\n$(-2)\\left(\\tfrac{1}{2}\\right)=-1$ $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 4,
+                    question: "Segment AB: $A(\\tfrac{1}{3},\\tfrac{5}{3})$, $B(\\tfrac{7}{3},-\\tfrac{1}{3})$;  Segment CD: $C(2,4)$, $D(5,3)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-\\frac{1}{3}-\\frac{5}{3}}{\\frac{7}{3}-\\frac{1}{3}}=\\frac{-2}{2}=-1$.\\n$\\displaystyle m_{CD}=\\frac{3-4}{5-2}=\\frac{-1}{3}=-\\frac{1}{3}$.\\n\\nNot equal; perpendicular to slope $-1$ would be $1$, not $-\\tfrac{1}{3}$. So **Neither**."
+                },
+                {
+                    id: 5,
+                    question: "Segment AB: $A(\\tfrac{1}{3},\\tfrac{5}{3})$, $B(\\tfrac{7}{3},-\\tfrac{1}{3})$;  Segment CD: $C(2,4)$, $D(5,1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-\\frac{1}{3}-\\frac{5}{3}}{\\frac{7}{3}-\\frac{1}{3}}=\\frac{-2}{2}=-1$.\\n$\\displaystyle m_{CD}=\\frac{1-4}{5-2}=\\frac{-3}{3}=-1$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 6,
+                    question: "Segment AB: $A(0,5)$, $B(9,2)$;  Segment CD: $C(-2,1)$, $D(1,10)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB}=\\frac{2-5}{9-0}=\\frac{-3}{9}=-\\frac{1}{3}$.\\n$\\displaystyle m_{CD}=\\frac{10-1}{1-(-2)}=\\frac{9}{3}=3$.\\n\\n$\\left(-\\tfrac{1}{3}\\right)(3)=-1$ so **Perpendicular**."
+                },
+                {
+                    id: 7,
+                    question: "Segment AB: $A(-5,-1)$, $B(1,8)$;  Segment CD: $C(2,-2)$, $D(8,7)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{8-(-1)}{1-(-5)}=\\frac{9}{6}=\\frac{3}{2}$.\\n$\\displaystyle m_{CD}=\\frac{7-(-2)}{8-2}=\\frac{9}{6}=\\frac{3}{2}$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 8,
+                    question: "Segment AB: $A(-2,7)$, $B(4,7)$;  Segment CD: $C(3,-1)$, $D(3,5)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\overline{AB}$ is horizontal ($y=7$).\\n$\\overline{CD}$ is vertical ($x=3$).\\n\\nHorizontal $\\perp$ vertical $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 9,
+                    question: "Segment AB: $A(-8,3)$, $B(-2,-9)$;  Segment CD: $C(0,1)$, $D(6,-3)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{-9-3}{-2-(-8)}=\\frac{-12}{6}=-2$.\\n$\\displaystyle m_{CD}=\\frac{-3-1}{6-0}=\\frac{-4}{6}=-\\frac{2}{3}$.\\n\\nNot equal; product $(-2)\\left(-\\tfrac{2}{3}\\right)=\\tfrac{4}{3}\\neq-1$. So **Neither**."
+                },
+                {
+                    id: 10,
+                    question: "Segment AB: $A(1,9)$, $B(7,5)$;  Segment CD: $C(-3,2)$, $D(0,\\tfrac{1}{2})$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{5-9}{7-1}=\\frac{-4}{6}=-\\frac{2}{3}$.\\n$\\displaystyle m_{CD}=\\frac{\\frac{1}{2}-2}{0-(-3)}=\\frac{-\\frac{3}{2}}{3}=-\\frac{1}{2}$.\\n\\nNot equal and not negative reciprocals. So **Neither**."
+                },
+                {
+                    id: 11,
+                    question: "Segment AB: $A(1,9)$, $B(7,5)$;  Segment CD: $C(-3,2)$, $D(3,-2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB}=\\frac{5-9}{7-1}=\\frac{-4}{6}=-\\frac{2}{3}$.\\n$\\displaystyle m_{CD}=\\frac{-2-2}{3-(-3)}=\\frac{-4}{6}=-\\frac{2}{3}$.\\n\\nSame slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 12,
+                    question: "Segment AB: $A(-1,0)$, $B(2,6)$;  Segment CD: $C(5,1)$, $D(11,4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB}=\\frac{6-0}{2-(-1)}=\\frac{6}{3}=2$.\\n$\\displaystyle m_{CD}=\\frac{4-1}{11-5}=\\frac{3}{6}=\\frac{1}{2}$.\\n\\nNot parallel; product $2\\cdot\\tfrac{1}{2}=1\\neq-1$, so **Neither**."
+                }
+            ]
+        },
+
+        intermediate3: {
+            title: "Module 4",
+            subtitle: "Slope Mastery",
+            description: "Strengthen your slope analysis with diverse segment pairs.",
+            difficulty: "Intermediate",
+            questions: [
+                {
+                    id: 1,
+                    question: "Segment AB: $A(2, 5)$, $B(4, 9)$;  Segment CD: $C(-1, 2)$, $D(1, 6)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{9-5}{4-2} = \\frac{4}{2} = 2$. $m_{CD} = \\frac{6-2}{1-(-1)} = \\frac{4}{2} = 2$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 2,
+                    question: "Segment AB: $A(3, -2)$, $B(5, -1)$;  Segment CD: $C(0, 4)$, $D(2, 0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = \\frac{-1-(-2)}{5-3} = \\frac{1}{2}$. $m_{CD} = \\frac{0-4}{2-0} = \\frac{-4}{2} = -2$. Product is $-1$ $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 3,
+                    question: "Segment AB: $A(-3, -3)$, $B(0, 0)$;  Segment CD: $C(1, 5)$, $D(4, 8)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{0-(-3)}{0-(-3)} = 1$. $m_{CD} = \\frac{8-5}{4-1} = \\frac{3}{3} = 1$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 4,
+                    question: "Segment AB: $A(2, 7)$, $B(2, -3)$;  Segment CD: $C(5, 4)$, $D(8, 4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "AB is vertical ($x=2$). CD is horizontal ($y=4$). Vertical $\\perp$ Horizontal $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 5,
+                    question: "Segment AB: $A(0, 0)$, $B(5, 2)$;  Segment CD: $C(0, 0)$, $D(2, 5)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB} = \\frac{2}{5}$. $m_{CD} = \\frac{5}{2}$. Reciprocals but not negative reciprocals. So **Neither**."
+                },
+                {
+                    id: 6,
+                    question: "Segment AB: $A(1, 1)$, $B(4, 10)$;  Segment CD: $C(2, 2)$, $D(5, 11)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{10-1}{4-1} = \\frac{9}{3} = 3$. $m_{CD} = \\frac{11-2}{5-2} = \\frac{9}{3} = 3$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 7,
+                    question: "Segment AB: $A(8, -1)$, $B(4, 1)$;  Segment CD: $C(-2, -3)$, $D(0, 1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = \\frac{1-(-1)}{4-8} = \\frac{2}{-4} = -\\frac{1}{2}$. $m_{CD} = \\frac{1-(-3)}{0-(-2)} = \\frac{4}{2} = 2$. Product is $-1$ $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 8,
+                    question: "Segment AB: $A(-2, 5)$, $B(2, 3)$;  Segment CD: $C(1, 1)$, $D(5, -1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{3-5}{2-(-2)} = \\frac{-2}{4} = -\\frac{1}{2}$. $m_{CD} = \\frac{-1-1}{5-1} = \\frac{-2}{4} = -\\frac{1}{2}$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 9,
+                    question: "Segment AB: $A(1, 4)$, $B(4, 5)$;  Segment CD: $C(2, 2)$, $D(6, 4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB} = \\frac{5-4}{4-1} = \\frac{1}{3}$. $m_{CD} = \\frac{4-2}{6-2} = \\frac{2}{4} = \\frac{1}{2}$. Not equal. So **Neither**."
+                },
+                {
+                    id: 10,
+                    question: "Segment AB: $A(-5, -5)$, $B(0, 0)$;  Segment CD: $C(0, 5)$, $D(5, 0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = 1$. $m_{CD} = \\frac{0-5}{5-0} = -1$. Product is $-1$ $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 11,
+                    question: "Segment AB: $A(3, 2)$, $B(3, 8)$;  Segment CD: $C(5, 1)$, $D(5, -4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "Both are vertical lines ($x=3$ and $x=5$). Vertical lines are **Parallel**."
+                },
+                {
+                    id: 12,
+                    question: "Segment AB: $A(2, 3)$, $B(6, 5)$;  Segment CD: $C(1, 4)$, $D(3, 0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB} = \\frac{5-3}{6-2} = \\frac{2}{4} = \\frac{1}{2}$. $m_{CD} = \\frac{0-4}{3-1} = \\frac{-4}{2} = -2$. WAIT! $\\frac{1}{2} \\cdot (-2) = -1$. They ARE **Perpendicular**. (Correct answer is Perpendicular)."
+                }
+            ]
+        },
+
+        intermediate4: {
+            title: "Module 5",
+            subtitle: "Coordinate Challenge",
+            description: "Test your skills with fractions, larger numbers, and tricky pairs.",
+            difficulty: "Intermediate",
+            questions: [
+                {
+                    id: 1,
+                    question: "Segment AB: $A(\\frac{1}{4}, 2)$, $B(\\frac{5}{4}, 3)$;  Segment CD: $C(1, 1)$, $D(2, 2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{3-2}{\\frac{5}{4}-\\frac{1}{4}} = \\frac{1}{\\frac{4}{4}} = 1$. $m_{CD} = 1$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 2,
+                    question: "Segment AB: $A(0, 0)$, $B(10, 20)$;  Segment CD: $C(0, 5)$, $D(10, 0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = 2$. $m_{CD} = \\frac{0-5}{10-0} = -\\frac{1}{2}$. Negative reciprocals $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 3,
+                    question: "Segment AB: $A(-2.5, 1)$, $B(-0.5, 2)$;  Segment CD: $C(1, 3)$, $D(3, 4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{2-1}{-0.5-(-2.5)} = \\frac{1}{2}$. $m_{CD} = \\frac{4-3}{3-1} = \\frac{1}{2}$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 4,
+                    question: "Segment AB: $A(100, 100)$, $B(102, 106)$;  Segment CD: $C(50, 50)$, $D(56, 48)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = \\frac{6}{2} = 3$. $m_{CD} = \\frac{-2}{6} = -\\frac{1}{3}$. Negative reciprocals $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 5,
+                    question: "Segment AB: $A(1, 2)$, $B(4, 8)$;  Segment CD: $C(2, 1)$, $D(8, 4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB} = \\frac{6}{3} = 2$. $m_{CD} = \\frac{3}{6} = \\frac{1}{2}$. Reciprocals but not negative. So **Neither**."
+                },
+                {
+                    id: 6,
+                    question: "Segment AB: $A(\\frac{2}{3}, 1)$, $B(\\frac{5}{3}, 0)$;  Segment CD: $C(1, 1)$, $D(2, 2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = \\frac{0-1}{\\frac{3}{3}} = -1$. $m_{CD} = 1$. Negative reciprocals $\\Rightarrow$ **Perpendicular**."
+                },
+                {
+                    id: 7,
+                    question: "Segment AB: $A(-3, 2)$, $B(3, -2)$;  Segment CD: $C(-4, 0)$, $D(-1, -2)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{-4}{6} = -\\frac{2}{3}$. $m_{CD} = \\frac{-2}{3} = -\\frac{2}{3}$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 8,
+                    question: "Segment AB: $A(0, 10)$, $B(5, 10)$;  Segment CD: $C(2, 3)$, $D(2, 7)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "Horizontal ($y=10$) $\\perp$ Vertical ($x=2$). **Perpendicular**."
+                },
+                {
+                    id: 9,
+                    question: "Segment AB: $A(0.1, 0.2)$, $B(0.2, 0.4)$;  Segment CD: $C(1, 2)$, $D(2, 4)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = \\frac{0.2}{0.1} = 2$. $m_{CD} = \\frac{2}{1} = 2$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 10,
+                    question: "Segment AB: $A(1, 5)$, $B(3, 4)$;  Segment CD: $C(2, 2)$, $D(0, 1)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 2,
+                    solution: "$\\displaystyle m_{AB} = -\\frac{1}{2}$. $m_{CD} = \\frac{-1}{-2} = \\frac{1}{2}$. Negatives but not reciprocals. **Neither**."
+                },
+                {
+                    id: 11,
+                    question: "Segment AB: $A(-5, 5)$, $B(0, 10)$;  Segment CD: $C(0, -5)$, $D(5, 0)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 0,
+                    solution: "$\\displaystyle m_{AB} = 1$. $m_{CD} = 1$. Same slope $\\Rightarrow$ **Parallel**."
+                },
+                {
+                    id: 12,
+                    question: "Segment AB: $A(12, 4)$, $B(16, 2)$;  Segment CD: $C(5, 6)$, $D(6, 8)$.\\n\\nDetermine the relationship between $\\overline{AB}$ and $\\overline{CD}$.",
+                    options: ["Parallel", "Perpendicular", "Neither"],
+                    correctAnswer: 1,
+                    solution: "$\\displaystyle m_{AB} = \\frac{-2}{4} = -\\frac{1}{2}$. $m_{CD} = \\frac{2}{1} = 2$. Product $-1$ $\\Rightarrow$ **Perpendicular**."
+                }
+            ]
+        },
+
+        module3: {
+            title: "Module 1",
             subtitle: "Complex Synthesis",
             description: "Perpendicular bisectors, systems, parameter values, and geometry facts.",
             difficulty: "Elite",
@@ -238,17 +610,17 @@ window.questions = {
         },
 
         module4: {
-            title: "Module 4",
+            title: "Module 2",
             subtitle: "Advanced Coordinate Geometry",
-            description: "Angle between lines, point-to-line distance, medians, centers, and invariants.",
+            description: "Area of triangles, point-to-line distance, medians, and centers.",
             difficulty: "Elite",
             questions: [
                 {
                     id: 1,
-                    question: "Find the angle $\\theta$ between the lines $y=2x+1$ and $y=-x+4$.",
-                    options: ["$\\arctan(3)$", "$\\arctan(\\frac{1}{3})$", "$\\arctan(2)$", "$\\arctan(\\frac{3}{2})$"],
+                    question: "Find the area of the triangle with vertices $(0,0)$, $(6,0)$, and $(2,5)$.",
+                    options: ["15", "30", "12", "10"],
                     correctAnswer: 0,
-                    solution: "Slopes are $m_1=2$ and $m_2=-1$. $\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\frac{2-(-1)}{1+2(-1)}\\right|=\\left|\\frac{3}{-1}\\right|=3$, so $\\theta=\\arctan(3)$."
+                    solution: "Base is along x-axis from 0 to 6 (length 6). Height is the y-coordinate of the third vertex (5). Area = $\\frac{1}{2}(6)(5) = 15$."
                 },
                 {
                     id: 2,
@@ -306,10 +678,10 @@ window.questions = {
                 },
                 {
                     id: 9,
-                    question: "The lines $y=x$ and $y=-x$ have two angle bisectors. Which bisector is a function (passes the vertical line test), and what is its slope?",
-                    options: ["$x=0$ with slope 0", "$y=0$ with slope 0", "$x=0$ with slope undefined", "$y=0$ with slope undefined"],
-                    correctAnswer: 1,
-                    solution: "Angle bisectors are $y=0$ and $x=0$. Only $y=0$ is a function; its slope is 0."
+                    question: "Find the length of the altitude from $C$ to $AB$ for the triangle with vertices $A(0,0)$, $B(8,0)$, and $C(5, 6)$.",
+                    options: ["6", "5", "8", "4"],
+                    correctAnswer: 0,
+                    solution: "The base $AB$ lies on the x-axis ($y=0$). The altitude from $C(5,6)$ is simply the perpendicular distance to the x-axis, which is the y-coordinate: 6."
                 },
                 {
                     id: 10,
@@ -322,31 +694,31 @@ window.questions = {
         },
 
         module5: {
-            title: "Module 5",
+            title: "Module 3",
             subtitle: "Boss-Level Parameters & Geometry",
-            description: "Hard parameter solving, loci/bisectors, centers, and tangency.",
+            description: "Coordinate proofs, partitions, optimization, and synthesis.",
             difficulty: "Elite",
             questions: [
                 {
                     id: 1,
-                    question: "For what value(s) of $k$ do the lines $x + ky = 3$ and $2x + 6y = 5$ meet at an angle of $45^\\circ$?",
-                    options: ["$k=-2$", "$k=\\frac{1}{2}$", "$k=-2$ or $k=\\frac{1}{2}$", "$k=-\\frac{1}{3}$"],
-                    correctAnswer: 2,
-                    solution: "Slopes: $x+ky=3 \\rightarrow y=-\\frac{1}{k}x+\\frac{3}{k}$ so $m_1=-\\frac{1}{k}$. And $2x+6y=5 \\rightarrow y=-\\frac{1}{3}x+\\frac{5}{6}$ so $m_2=-\\frac{1}{3}$. For angle $45^\\circ$, $\\tan\\theta=1=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\frac{k-3}{3k+1}\\right|$. So $|k-3|=|3k+1|$, giving $k=-2$ or $k=\\frac{1}{2}$."
+                    question: "Find the centroid of the triangle with vertices $(2, 1)$, $(6, 3)$, and $(4, -1)$.",
+                    options: ["$(4, 1)$", "$(3, 1)$", "$(4, 2)$", "$(5, 1)$"],
+                    correctAnswer: 0,
+                    solution: "Centroid formula: $\\left(\\frac{x_1+x_2+x_3}{3}, \\frac{y_1+y_2+y_3}{3}\\right)$. $x = \\frac{2+6+4}{3}=4$. $y = \\frac{1+3-1}{3}=1$. Centroid is $(4, 1)$."
                 },
                 {
                     id: 2,
-                    question: "Find the locus of points equidistant from the parallel lines $y=2x+1$ and $y=2x-5$.",
-                    options: ["$y=2x-2$", "$y=2x+3$", "$y=-2x-2$", "$x=2$"],
+                    question: "Find the coordinates of the point that partitions the segment from $(1, 1)$ to $(9, 5)$ in the ratio $1:3$ (close to first point).",
+                    options: ["$(3, 2)$", "$(5, 3)$", "$(2, 2)$", "$(7, 4)$"],
                     correctAnswer: 0,
-                    solution: "For parallel lines $y=mx+c_1$ and $y=mx+c_2$, the midline equidistant from both is $y=mx+\\frac{c_1+c_2}{2}$. Here $m=2$, $c_1=1$, $c_2=-5$, so midpoint intercept is $\\frac{1+(-5)}{2}=-2$. Thus $y=2x-2$."
+                    solution: "Section formula: $\\left(\\frac{nx_1+mx_2}{m+n}, \\frac{ny_1+my_2}{m+n}\\right)$ with ratio $m:n = 1:3$. $(x,y) = (\\frac{3(1)+1(9)}{4}, \\frac{3(1)+1(5)}{4}) = (\\frac{12}{4}, \\frac{8}{4}) = (3, 2)$."
                 },
                 {
                     id: 3,
-                    question: "Reflect the point $(2,-5)$ across the line $y=x$.",
-                    options: ["$(-5,2)$", "$(5,-2)$", "$(-2,5)$", "$(2,5)$"],
+                    question: "What is the distance between the x-intercept and y-intercept of the line $3x - 4y = 12$?",
+                    options: ["5", "7", "6", "12"],
                     correctAnswer: 0,
-                    solution: "Reflection across $y=x$ swaps coordinates: $(x,y) \\mapsto (y,x)$. So $(2,-5)$ becomes $(-5,2)$."
+                    solution: "x-int: $3x=12 \\rightarrow (4,0)$. y-int: $-4y=12 \\rightarrow (0,-3)$. Distance $\\sqrt{(4-0)^2 + (0-(-3))^2} = \\sqrt{16+9} = \\sqrt{25} = 5$."
                 },
                 {
                     id: 4,
@@ -357,24 +729,24 @@ window.questions = {
                 },
                 {
                     id: 5,
-                    question: "For which value(s) of $t$ are the points $(1,2)$, $(t,5)$, and $(4,t)$ collinear?",
-                    options: ["$t=\\frac{3+\\sqrt{37}}{2}$ or $t=\\frac{3-\\sqrt{37}}{2}$", "$t=\\pm\\sqrt{37}$", "$t=\\frac{3}{2}$", "$t=7$"],
+                    question: "A line with slope 2 passes through points $(3, k)$ and $(1, 4)$. Find $k$.",
+                    options: ["8", "6", "0", "-1"],
                     correctAnswer: 0,
-                    solution: "Collinear means slopes match: $\\frac{5-2}{t-1}=\\frac{t-2}{4-1}$. So $\\frac{3}{t-1}=\\frac{t-2}{3} \\rightarrow 9=(t-1)(t-2)=t^2-3t+2$. Thus $t^2-3t-7=0$, giving $t=\\frac{3\\pm\\sqrt{37}}{2}$."
+                    solution: "Slope formula: $\\frac{k - 4}{3 - 1} = 2$. $\\frac{k-4}{2} = 2 \\rightarrow k-4=4 \\rightarrow k=8$."
                 },
                 {
                     id: 6,
                     question: "A line passes through the intersection of $x+2y=7$ and $3x-y=5$, and is parallel to $4x+5y=20$. What is the equation of the line?",
-                    options: ["$y=-\\frac{4}{5}x+\\frac{84}{35}$", "$y=\\frac{4}{5}x-\\frac{84}{35}$", "$y=-\\frac{5}{4}x+\\frac{84}{35}$", "$4x+5y=20$"],
+                    options: ["$y=-\\frac{4}{5}x+\\frac{148}{35}$", "$y=\\frac{4}{5}x-\\frac{148}{35}$", "$y=-\\frac{5}{4}x+\\frac{148}{35}$", "$4x+5y=20$"],
                     correctAnswer: 0,
-                    solution: "Intersection: solve $x+2y=7$ and $3x-y=5$ to get $(x,y)=(\\frac{17}{7},\\frac{16}{7})$. Line $4x+5y=20$ has slope $-4/5$. Through the point: $y-\\frac{16}{7}=-\\frac{4}{5}(x-\\frac{17}{7}) \\rightarrow y=-\\frac{4}{5}x+\\frac{12}{5}$, and $\\frac{12}{5}=\\frac{84}{35}$."
+                    solution: "Intersection of $x+2y=7$ and $3x-y=5$ is $(\\frac{17}{7},\\frac{16}{7})$. A line parallel to $4x+5y=20$ has slope $-\\frac{4}{5}$. So $y-\\frac{16}{7}=-\\frac{4}{5}(x-\\frac{17}{7})\\Rightarrow y=-\\frac{4}{5}x+\\frac{148}{35}$."
                 },
                 {
                     id: 7,
-                    question: "Find the slopes of the angle bisectors of the lines $2x-y=0$ and $x+2y=0$.",
-                    options: ["$\\frac{1}{3}$ and $-3$", "$3$ and $-\\frac{1}{3}$", "$\\frac{2}{3}$ and $-\\frac{3}{2}$", "$1$ and $-1$"],
+                    question: "If the midpoint of a segment is $(2, 3)$ and one endpoint is $(-1, 1)$, what is the other endpoint?",
+                    options: ["$(5, 5)$", "$(0.5, 2)$", "$(1, 2)$", "$(3, 2)$"],
                     correctAnswer: 0,
-                    solution: "Angle bisectors satisfy $\\frac{|2x-y|}{\\sqrt{5}}=\\frac{|x+2y|}{\\sqrt{5}} \\Rightarrow 2x-y=\\pm(x+2y)$. Case 1: $2x-y=x+2y \\rightarrow x-3y=0 \\rightarrow y=\\frac{1}{3}x$. Case 2: $2x-y=-(x+2y) \\rightarrow 3x+y=0 \\rightarrow y=-3x$."
+                    solution: "Midpoint $M = \\frac{P_1+P_2}{2}$. $P_2 = 2M - P_1$. $x = 2(2) - (-1) = 5$. $y = 2(3) - 1 = 5$. Endpoint is $(5, 5)$."
                 },
                 {
                     id: 8,
@@ -392,10 +764,10 @@ window.questions = {
                 },
                 {
                     id: 10,
-                    question: "A line is tangent to the circle $x^2+y^2=25$ and has slope $-\\frac{3}{4}$. What is the equation of the tangent line?",
-                    options: ["$3x+4y=25$", "$4x+3y=25$", "$3x-4y=25$", "$3x+4y=5$"],
+                    question: "Find the shortest distance from the origin $(0,0)$ to the line $3x + 4y = 20$.",
+                    options: ["4", "5", "3", "20"],
                     correctAnswer: 0,
-                    solution: "For circle $x^2+y^2=r^2$, tangent at $(x_1,y_1)$ is $xx_1+yy_1=r^2$. Slope $-\\frac{3}{4}$ means radius slope is $\\frac{4}{3}$, so point lies on $y=\\frac{4}{3}x$. Substitute into circle: $x^2+\\frac{16}{9}x^2=25 \\rightarrow \\frac{25}{9}x^2=25 \\rightarrow x=3$, $y=4$. Tangent: $3x+4y=25$."
+                    solution: "Use point-to-line formula: $d = \\frac{|Ax_1 + By_1 - C|}{\\sqrt{A^2+B^2}}$. $d = \\frac{|3(0) + 4(0) - 20|}{\\sqrt{3^2+4^2}} = \\frac{|-20|}{5} = \\frac{20}{5} = 4$."
                 }
             ]
         }
