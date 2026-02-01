@@ -309,7 +309,7 @@ function loadQuestion() {
         if (qData.type === 'error_recognition') {
             // Render Question Text with Markdown Support (Bold)
             const rawText = qData.question || "";
-            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
             document.getElementById('question-text').innerHTML = formattedText;
             const sentenceBox = document.createElement('div');
             sentenceBox.className = 'error-sentence-box';
@@ -351,7 +351,7 @@ function loadQuestion() {
         else if (qData.type === 'sentence_ordering') {
             // Render Question Text with Markdown Support (Bold)
             const rawText = qData.question || "";
-            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
             document.getElementById('question-text').innerHTML = formattedText;
 
             const orderBox = document.createElement('div');
@@ -374,7 +374,7 @@ function loadQuestion() {
         else {
             // Render Question Text with Markdown Support (Bold)
             const rawText = qData.question || "";
-            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
             document.getElementById('question-text').innerHTML = formattedText;
             qData.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
