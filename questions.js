@@ -241,7 +241,7 @@ window.questions = {
             title: "Module 4",
             subtitle: "Advanced Coordinate Geometry",
             description: "Angle between lines, point-to-line distance, medians, centers, and invariants.",
-            difficulty: "Elite+",
+            difficulty: "Elite",
             questions: [
                 {
                     id: 1,
@@ -325,7 +325,7 @@ window.questions = {
             title: "Module 5",
             subtitle: "Boss-Level Parameters & Geometry",
             description: "Hard parameter solving, loci/bisectors, centers, and tangency.",
-            difficulty: "Boss",
+            difficulty: "Elite",
             questions: [
                 {
                     id: 1,
