@@ -503,76 +503,218 @@ body {
   transition: transform var(--transition-base);
 }
 
-/* Quick Reference Styling */
-.ref-container {
-  display: block;
-  width: 100%;
+/* =========================================
+   OVERHAUL: QUICK REFERENCE DOCUMENTATION STYLE
+   ========================================= */
+
+/* Scoped Modal Body Reset for Sidebar Layout */
+#quick-ref-modal .modal-body {
+  padding: 0 !important;
+  /* Remove padding to let sidebar flush */
+  overflow: hidden !important;
+  /* Layout manages scroll */
+  display: flex;
+  flex-direction: column;
 }
 
+.ref-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  min-height: 500px;
+  /* Ensure visible height */
+}
+
+/* --- SIDEBAR --- */
 .ref-sidebar {
+  width: 260px;
+  background: var(--bg-secondary);
   border-right: 1px solid var(--border);
-  padding-right: 1.5rem;
+  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
-.ref-btn {
+.ref-nav-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  font-weight: 700;
+}
+
+.ref-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  width: 100%;
   text-align: left;
   background: transparent;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
   border: 1px solid transparent;
-  cursor: pointer;
-  font-weight: 600;
+  border-radius: var(--radius-md);
   color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.ref-btn:hover {
-  background: var(--bg-secondary);
-  color: var(--primary);
+.ref-nav-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text-primary);
 }
 
-.ref-btn.active {
-  background: var(--primary);
-  color: white;
-  box-shadow: var(--shadow);
-}
-
-.ref-content-area {
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-.ref-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.ref-card {
-  background: var(--bg-secondary);
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-}
-
-.ref-card h4 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-  border-bottom: 2px solid rgba(99, 102, 241, 0.1);
-  padding-bottom: 0.5rem;
-  font-size: 1.05rem;
-}
-
-.formula-box {
+.ref-nav-item.active {
   background: var(--bg-card);
-  padding: 0.75rem;
+  color: var(--primary);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .ref-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .ref-nav-item.active {
+  background: rgba(99, 102, 241, 0.15);
+  /* Tinted background */
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* --- MAIN CONTENT --- */
+.ref-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2.5rem 3rem;
+  background: var(--bg-primary);
+  /* Contrast with sidebar */
+}
+
+.ref-section {
+  display: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.ref-section.active {
+  display: block;
+}
+
+.ref-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+/* --- DOCUMENTATION BLOCKS --- */
+.ref-block {
+  margin-bottom: 2.5rem;
+}
+
+.ref-block h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.ref-block p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Math / Code Box */
+.math-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  margin: 0.5rem 0;
-  border-left: 3px solid var(--accent);
-  font-family: 'Merriweather', serif;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  box-shadow: var(--shadow-sm);
+  font-size: 1.2rem;
+}
+
+/* Key-Value Row */
+.math-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+.math-row:last-child {
+  border-bottom: none;
+}
+
+.math-row .label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.math-row .value {
+  color: var(--primary);
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+}
+
+/* Highlight Text */
+.highlight-text {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--warning);
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ref-layout {
+    flex-direction: column;
+  }
+
+  .ref-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  .ref-nav-item {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .ref-main {
+    padding: 1.5rem;
+  }
 }
 
 .modal-content {
