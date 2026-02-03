@@ -771,5 +771,346 @@ window.questions = {
                 }
             ]
         }
+    },
+    polynomials: {
+        "poly_module1": {
+            "title": "Module 1",
+            "subtitle": "Polynomial Functions Basics",
+            "description": "Identify polynomials, degree, leading coefficient, standard form, and basic evaluation/simplifying.",
+            "difficulty": "Foundation",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Which of the following is a **polynomial** in $x$?",
+                    "options": ["$3x^2-5x+1$", "$\\dfrac{2}{x}+1$", "$\\sqrt{x}+4$", "$3^{x}$"],
+                    "correctAnswer": 0,
+                    "solution": "A polynomial has only **nonnegative integer** exponents on $x$ and no $x$ in denominators or radicals. Only $3x^2-5x+1$ fits."
+                },
+                {
+                    "id": 2,
+                    "question": "What is the **degree** of $P(x)=7x^4-2x^2+9$?",
+                    "options": ["2", "4", "6", "9"],
+                    "correctAnswer": 1,
+                    "solution": "The degree is the highest exponent of $x$. Here the highest power is $4$."
+                },
+                {
+                    "id": 3,
+                    "question": "Find the **leading coefficient** of $f(x)=-5x^3+2x-8$.",
+                    "options": ["$-5$", "$5$", "$-8$", "$2$"],
+                    "correctAnswer": 0,
+                    "solution": "The leading term is the term with highest power: $-5x^3$. Its coefficient is $-5$."
+                },
+                {
+                    "id": 4,
+                    "question": "Put $g(x)=2-3x+4x^2$ in **standard form**.",
+                    "options": ["$2-3x+4x^2$", "$4x^2-3x+2$", "$-3x+4x^2+2$", "$4x^2+2-3x$"],
+                    "correctAnswer": 1,
+                    "solution": "Standard form lists terms from highest degree to constant: $4x^2-3x+2$."
+                },
+                {
+                    "id": 5,
+                    "question": "Evaluate $P(2)$ if $P(x)=x^2-3x+4$.",
+                    "options": ["2", "3", "4", "6"],
+                    "correctAnswer": 0,
+                    "solution": "Substitute $x=2$: $P(2)=2^2-3(2)+4=4-6+4=2$."
+                },
+                {
+                    "id": 6,
+                    "question": "Evaluate $f(-1)$ if $f(x)=2x^3-x+5$.",
+                    "options": ["2", "4", "6", "8"],
+                    "correctAnswer": 1,
+                    "solution": "Compute: $f(-1)=2(-1)^3-(-1)+5=-2+1+5=4$."
+                },
+                {
+                    "id": 7,
+                    "question": "Simplify: $(3x^2+2x-1) + (x^2-5x+4)$.",
+                    "options": ["$4x^2-3x+3$", "$4x^2+7x+3$", "$2x^2-3x+3$", "$4x^2-7x+3$"],
+                    "correctAnswer": 0,
+                    "solution": "Add like terms: $(3x^2+x^2)=4x^2$, $(2x-5x)=-3x$, $(-1+4)=3$."
+                },
+                {
+                    "id": 8,
+                    "question": "Simplify: $(5x^3-2x^2+7) - (x^3+4x^2-3)$.",
+                    "options": ["$4x^3-6x^2+10$", "$4x^3+2x^2+4$", "$6x^3-6x^2+4$", "$4x^3-6x^2+4$"],
+                    "correctAnswer": 0,
+                    "solution": "Distribute the minus then combine: $5x^3-2x^2+7 -x^3-4x^2+3 =4x^3-6x^2+10$."
+                },
+                {
+                    "id": 9,
+                    "question": "Which term is the **constant term** of $h(x)=9x^2-4x+11$?",
+                    "options": ["$9x^2$", "$-4x$", "$11$", "$9$"],
+                    "correctAnswer": 2,
+                    "solution": "The constant term has no $x$. It is $11$."
+                },
+                {
+                    "id": 10,
+                    "question": "If $P(x)$ has degree 1, what kind of function is it?",
+                    "options": ["Quadratic", "Linear", "Cubic", "Exponential"],
+                    "correctAnswer": 1,
+                    "solution": "Degree 1 polynomials are linear functions."
+                },
+                {
+                    "id": 11,
+                    "question": "Which expression is **not** a polynomial because it has a negative exponent?",
+                    "options": ["$x^3-2x$", "$4x^{-1}+7$", "$2x^2+1$", "$5$"],
+                    "correctAnswer": 1,
+                    "solution": "A polynomial cannot contain $x^{-1}$ (negative exponent)."
+                },
+                {
+                    "id": 12,
+                    "question": "Find the value of the coefficient $k$ if $P(x)=kx^2-6x+1$ and the leading coefficient is 5.",
+                    "options": ["$k=1$", "$k=-6$", "$k=5$", "$k=6$"],
+                    "correctAnswer": 2,
+                    "solution": "The leading term is $kx^2$ so the leading coefficient is $k$. Set $k=5$."
+                },
+                {
+                    "id": 13,
+                    "question": "Simplify: $2(3x^2-4x+1)$.",
+                    "options": ["$6x^2-8x+2$", "$6x^2-2x+1$", "$3x^2-8x+2$", "$6x^2+8x+2$"],
+                    "correctAnswer": 0,
+                    "solution": "Distribute 2 to each term: $2\\cdot3x^2=6x^2$, $2\\cdot(-4x)=-8x$, $2\\cdot1=2$."
+                },
+                {
+                    "id": 14,
+                    "question": "What is the value of $P(0)$ for $P(x)=4x^3-x+9$?",
+                    "options": ["0", "4", "9", "$-9$"],
+                    "correctAnswer": 2,
+                    "solution": "Plug in $x=0$: $P(0)=0-0+9=9$. This is also the y-intercept."
+                },
+                {
+                    "id": 15,
+                    "question": "Which statement is ALWAYS true for a polynomial function?",
+                    "options": ["It has a square root", "It has a denominator with $x$", "It is defined for all real $x$", "It has degree 0 only"],
+                    "correctAnswer": 2,
+                    "solution": "Polynomials have no division by $x$ or radicals, so they are defined for all real numbers."
+                }
+            ]
+        },
+        "poly_module2": {
+            "title": "Module 2",
+            "subtitle": "Operations & Simple Factoring",
+            "description": "Add/subtract/multiply polynomials, factor common patterns, and connect factors to zeros.",
+            "difficulty": "Intermediate",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Simplify: $(2x^2-3x+5) + (x^2+7x-9)$.",
+                    "options": ["$3x^2+4x-4$", "$3x^2-10x+14$", "$x^2+4x-4$", "$3x^2+10x-14$"],
+                    "correctAnswer": 0,
+                    "solution": "Combine like terms: $2x^2+x^2=3x^2$, $-3x+7x=4x$, $5-9=-4$."
+                },
+                {
+                    "id": 2,
+                    "question": "Simplify: $(4x^3- x^2+2x) - (x^3+3x^2-5x)$.",
+                    "options": ["$3x^3-4x^2+7x$", "$5x^3+2x^2-3x$", "$3x^3-2x^2-3x$", "$3x^3+2x^2+7x$"],
+                    "correctAnswer": 0,
+                    "solution": "Subtract term-by-term: $4x^3-x^3=3x^3$, $-x^2-3x^2=-4x^2$, $2x-(-5x)=7x$."
+                },
+                {
+                    "id": 3,
+                    "question": "Multiply: $(-3x)(2x^2-5x+4)$.",
+                    "options": ["$-6x^3+15x^2-12x$", "$-6x^3-15x^2-12x$", "$6x^3-15x^2+12x$", "$-6x^2+15x-12$"],
+                    "correctAnswer": 0,
+                    "solution": "Distribute $-3x$: $(-3x)(2x^2)=-6x^3$, $(-3x)(-5x)=15x^2$, $(-3x)(4)=-12x$."
+                },
+                {
+                    "id": 4,
+                    "question": "Expand: $(x+5)(x-2)$.",
+                    "options": ["$x^2+3x-10$", "$x^2-3x-10$", "$x^2+7x-10$", "$x^2+3x+10$"],
+                    "correctAnswer": 0,
+                    "solution": "FOIL: $x^2-2x+5x-10=x^2+3x-10$."
+                },
+                {
+                    "id": 5,
+                    "question": "Expand: $(2x-3)^2$.",
+                    "options": ["$4x^2-12x+9$", "$4x^2-6x+9$", "$4x^2+12x+9$", "$2x^2-12x+9$"],
+                    "correctAnswer": 0,
+                    "solution": "$(a-b)^2=a^2-2ab+b^2$: $(2x)^2-2(2x)(3)+3^2=4x^2-12x+9$."
+                },
+                {
+                    "id": 6,
+                    "question": "Factor: $6x^2+9x$.",
+                    "options": ["$3x(2x+3)$", "$6x(x+9)$", "$9x(\\tfrac{2}{3}x+1)$", "$x(6x+9)$"],
+                    "correctAnswer": 0,
+                    "solution": "Greatest common factor is $3x$. Factor: $6x^2+9x=3x(2x+3)$."
+                },
+                {
+                    "id": 7,
+                    "question": "Factor: $x^2-16$.",
+                    "options": ["$(x-4)^2$", "$(x-4)(x+4)$", "$(x-8)(x+2)$", "Prime"],
+                    "correctAnswer": 1,
+                    "solution": "Difference of squares: $a^2-b^2=(a-b)(a+b)$. Here $x^2-4^2=(x-4)(x+4)$."
+                },
+                {
+                    "id": 8,
+                    "question": "Factor completely: $x^2+5x+6$.",
+                    "options": ["$(x+2)(x+3)$", "$(x-2)(x-3)$", "$(x+1)(x+6)$", "Prime"],
+                    "correctAnswer": 0,
+                    "solution": "Find two numbers that multiply to 6 and add to 5: 2 and 3. So $(x+2)(x+3)$."
+                },
+                {
+                    "id": 9,
+                    "question": "Solve: $x^2-9=0$.",
+                    "options": ["$x=9$ only", "$x=-9$ only", "$x=3$ or $x=-3$", "$x=\\pm 9$"],
+                    "correctAnswer": 2,
+                    "solution": "Factor: $x^2-9=(x-3)(x+3)=0$. So $x=3$ or $x=-3$."
+                },
+                {
+                    "id": 10,
+                    "question": "If $P(x)=(x-1)(x+4)$, what are the zeros of $P(x)$?",
+                    "options": ["$1$ and $4$", "$-1$ and $-4$", "$1$ and $-4$", "$-1$ and $4$"],
+                    "correctAnswer": 2,
+                    "solution": "Set each factor to zero: $x-1=0\\Rightarrow x=1$, $x+4=0\\Rightarrow x=-4$."
+                },
+                {
+                    "id": 11,
+                    "question": "What is the y-intercept of $P(x)=x^3-2x^2+5$?",
+                    "options": ["$-2$", "$0$", "$5$", "$1$"],
+                    "correctAnswer": 2,
+                    "solution": "The y-intercept is $P(0)=5$."
+                },
+                {
+                    "id": 12,
+                    "question": "Which polynomial has **odd degree**?",
+                    "options": ["$x^4-1$", "$3x^3+x$", "$2x^2+7$", "$5$"],
+                    "correctAnswer": 1,
+                    "solution": "Odd degree means highest exponent is odd. $3x^3+x$ has degree 3."
+                },
+                {
+                    "id": 13,
+                    "question": "The graph of a polynomial with **even degree** and **positive** leading coefficient goes…",
+                    "options": ["Up on the left, up on the right", "Down on the left, down on the right", "Up on the left, down on the right", "Down on the left, up on the right"],
+                    "correctAnswer": 0,
+                    "solution": "Even degree + positive leading coefficient: both ends rise."
+                },
+                {
+                    "id": 14,
+                    "question": "Compute $P(3)$ if $P(x)=2x^2-x-1$.",
+                    "options": ["14", "15", "16", "17"],
+                    "correctAnswer": 0,
+                    "solution": "$P(3)=2(3^2)-3-1=2(9)-4=18-4=14$."
+                },
+                {
+                    "id": 15,
+                    "question": "Which statement about polynomial graphs is true?",
+                    "options": ["They can have holes like rational graphs", "They can jump (discontinuous)", "They are continuous (no breaks)", "They always stay above the x-axis"],
+                    "correctAnswer": 2,
+                    "solution": "Polynomials are continuous for all real $x$, so their graphs have no breaks or holes."
+                }
+            ]
+        },
+        "poly_module3": {
+            "title": "Module 3",
+            "subtitle": "Polynomial Behavior & Modeling",
+            "description": "Still PSHS G8 scope: operations, evaluation, degree/leading term, zeros from given factors, and basic end behavior.",
+            "difficulty": "Elite",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "What is the **degree** and **leading coefficient** of $P(x)= -3x^4 + 5x^2 - x + 9$?",
+                    "options": ["degree 4, leading coefficient $-3$", "degree 4, leading coefficient $5$", "degree 2, leading coefficient $5$", "degree 9, leading coefficient $9$"],
+                    "correctAnswer": 0,
+                    "solution": "The highest power is $x^4$, so the degree is 4. The coefficient of $x^4$ is $-3$, so the leading coefficient is $-3$."
+                },
+                {
+                    "id": 2,
+                    "question": "Evaluate $P(2)$ if $P(x)=x^3-4x^2+2x+1$.",
+                    "options": ["$-3$", "$1$", "$5$", "$9$"],
+                    "correctAnswer": 0,
+                    "solution": "Substitute $x=2$: $P(2)=2^3-4(2^2)+2(2)+1=8-16+4+1=-3$."
+                },
+                {
+                    "id": 3,
+                    "question": "Simplify: $(4x^3-2x^2+5x-1)+(x^3+3x^2-4x+6)$.",
+                    "options": ["$5x^3+x^2+x+5$", "$5x^3+x^2+x-7$", "$3x^3+x^2+x+5$", "$5x^3-5x^2+x+5$"],
+                    "correctAnswer": 0,
+                    "solution": "Add like terms: $(4x^3+x^3)=5x^3$, $(-2x^2+3x^2)=x^2$, $(5x-4x)=x$, $(-1+6)=5$. So $5x^3+x^2+x+5$."
+                },
+                {
+                    "id": 4,
+                    "question": "Simplify: $(3x^2-7x+4)-(x^2+2x-9)$.",
+                    "options": ["$2x^2-9x+13$", "$2x^2-5x-5$", "$4x^2-9x-5$", "$2x^2-9x-13$"],
+                    "correctAnswer": 0,
+                    "solution": "Distribute the minus: $3x^2-7x+4-x^2-2x+9 = 2x^2-9x+13$."
+                },
+                {
+                    "id": 5,
+                    "question": "Expand and simplify: $-2x(3x^2- x + 4)$.",
+                    "options": ["$-6x^3+2x^2-8x$", "$-6x^3-2x^2-8x$", "$6x^3-2x^2+8x$", "$-6x^3+2x^2+8x$"],
+                    "correctAnswer": 0,
+                    "solution": "Distribute $-2x$: $-2x\\cdot 3x^2=-6x^3$, $-2x\\cdot(-x)=+2x^2$, $-2x\\cdot 4=-8x$."
+                },
+                {
+                    "id": 6,
+                    "question": "Expand: $(x-5)(x+3)$.",
+                    "options": ["$x^2-2x-15$", "$x^2+8x-15$", "$x^2-8x-15$", "$x^2-2x+15$"],
+                    "correctAnswer": 0,
+                    "solution": "FOIL: $x^2+3x-5x-15 = x^2-2x-15$."
+                },
+                {
+                    "id": 7,
+                    "question": "Which statement about the **end behavior** of $P(x)= -x^5 + 2x^3 - 7$ is TRUE?",
+                    "options": ["As $x\\to\\infty$, $P(x)\\to -\\infty$ and as $x\\to-\\infty$, $P(x)\\to \\infty$", "As $x\\to\\infty$, $P(x)\\to \\infty$ and as $x\\to-\\infty$, $P(x)\\to \\infty$", "As $x\\to\\infty$, $P(x)\\to -\\infty$ and as $x\\to-\\infty$, $P(x)\\to -\\infty$", "As $x\\to\\infty$, $P(x)\\to \\infty$ and as $x\\to-\\infty$, $P(x)\\to -\\infty$"],
+                    "correctAnswer": 0,
+                    "solution": "End behavior is controlled by the leading term $-x^5$ (odd degree, negative coefficient). For large positive $x$, $-x^5$ is very negative. For large negative $x$, $x^5$ is negative, so $-x^5$ is very positive."
+                },
+                {
+                    "id": 8,
+                    "question": "A polynomial has degree 4. What is the **maximum** possible number of turning points?",
+                    "options": ["2", "3", "4", "5"],
+                    "correctAnswer": 1,
+                    "solution": "A degree $n$ polynomial can have at most $n-1$ turning points. For $n=4$, the maximum is 3."
+                },
+                {
+                    "id": 9,
+                    "question": "If $P(x)=(x-2)(x+1)(x-4)$, which value is definitely a **zero** of $P(x)$?",
+                    "options": ["$-2$", "$-1$", "$1$", "$3$"],
+                    "correctAnswer": 1,
+                    "solution": "A zero happens when any factor equals 0. From $(x+1)$, we get $x=-1$."
+                },
+                {
+                    "id": 10,
+                    "question": "Given $P(x)=(x-3)^2(x+2)$, which statement is TRUE?",
+                    "options": ["$x=3$ is a zero, and it is repeated (multiplicity 2)", "$x=-2$ is a zero with multiplicity 2", "The only zero is $x=3$", "The polynomial has degree 2"],
+                    "correctAnswer": 0,
+                    "solution": "$(x-3)^2$ means $x=3$ is a zero counted twice (multiplicity 2). $(x+2)$ gives another zero $x=-2$. Total degree is $2+1=3$."
+                },
+                {
+                    "id": 11,
+                    "question": "Which polynomial will have the **largest value** for very large positive $x$?",
+                    "options": ["$A(x)=100x^2+1$", "$B(x)=x^3-10x$", "$C(x)= -2x^4+50$", "$D(x)=5x^3+7x^2$"],
+                    "correctAnswer": 3,
+                    "solution": "For very large positive $x$, the term with the highest degree and positive coefficient dominates the value. $D(x)$ behaves like $5x^3$, which is larger than $x^3$ and much larger than $100x^2$. $C(x)$ becomes very negative for large $x$."
+                },
+                {
+                    "id": 12,
+                    "question": "For $P(x)=7-3x+0x^2+5x^3$, what is the **coefficient of $x^2$** and the **constant term**?",
+                    "options": ["coefficient of $x^2$ is 0; constant term is 7", "coefficient of $x^2$ is 5; constant term is 7", "coefficient of $x^2$ is $-3$; constant term is 0", "coefficient of $x^2$ is 0; constant term is $-3$"],
+                    "correctAnswer": 0,
+                    "solution": "The $x^2$ term is $0x^2$, so its coefficient is 0. The constant term is 7."
+                },
+                {
+                    "id": 13,
+                    "question": "Which polynomial matches the description: **cubic**, leading coefficient **positive**, and constant term **negative**?",
+                    "options": ["$x^3-2x+5$", "$-x^3+4x^2-1$", "$2x^3+x^2-7$", "$x^2-3x-4$"],
+                    "correctAnswer": 2,
+                    "solution": "Cubic means degree 3. Positive leading coefficient means the $x^3$ coefficient is positive. Constant term negative means the last term is negative. Only $2x^3+x^2-7$ fits."
+                },
+                {
+                    "id": 14,
+                    "question": "Expand and simplify: $(x+2)(x-1)(x-3)$.",
+                    "options": ["$x^3-2x^2-5x+6$", "$x^3+2x^2-5x-6$", "$x^3-2x^2+5x-6$", "$x^3+2x^2+5x+6$"],
+                    "correctAnswer": 0,
+                    "solution": "First $(x+2)(x-1)=x^2+x-2$. Then $(x^2+x-2)(x-3)=x^3-2x^2-5x+6$."
+                },
+                {
+                    "id": 15,
+                    "question": "A rectangle has length $(x+4)$ and width $(x-1)$. Write the area as a polynomial and then find the area when $x=5$.",
+                    "options": ["Area $=x^2+3x-4$, and at $x=5$ the area is 36", "Area $=x^2+3x-4$, and at $x=5$ the area is 46", "Area $=x^2-3x-4$, and at $x=5$ the area is 36", "Area $=x^2+5x-4$, and at $x=5$ the area is 36"],
+                    "correctAnswer": 0,
+                    "solution": "Area $(x+4)(x-1)=x^2+3x-4$. Substitute $x=5$: $25+15-4=36$."
+                }
+            ]
+        }
     }
 };
