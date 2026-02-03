@@ -94,11 +94,11 @@
                         </div>
 
                         <div class="card-grid">
-                            <div class="card" onclick="selectSubject('geometry')">
-                                <div class="card-icon">📐</div>
-                                <h3>Parallel & Perpendicular Lines</h3>
-                                <p>Slopes, Intercepts, Linear Equations, and Cartesian Plane Geometry.</p>
-                                <span class="badge">9 Modules Available</span>
+                            <div class="card" onclick="selectSubject('polynomials')">
+                                <div class="card-icon">✖️</div>
+                                <h3>Polynomial Functions</h3>
+                                <p>Identify, evaluate, finding degree, operations, and basic factoring.</p>
+                                <span class="badge">3 Modules Available</span>
                             </div>
 
                             <div class="card" onclick="selectSubject('linear_functions')">
@@ -106,6 +106,20 @@
                                 <h3>Linear Functions</h3>
                                 <p>Domain, Range, Function Notation, and Real-world Applications.</p>
                                 <span class="badge">Coming Soon</span>
+                            </div>
+
+                            <div class="card" onclick="selectSubject('line_equation')">
+                                <div class="card-icon">✍️</div>
+                                <h3>Equation of a Line and Graphing</h3>
+                                <p>Slope-intercept form, point-slope form, and graphing techniques.</p>
+                                <span class="badge">Coming Soon</span>
+                            </div>
+
+                            <div class="card" onclick="selectSubject('geometry')">
+                                <div class="card-icon">📐</div>
+                                <h3>Parallel & Perpendicular Lines</h3>
+                                <p>Slopes, Intercepts, Linear Equations, and Cartesian Plane Geometry.</p>
+                                <span class="badge">9 Modules Available</span>
                             </div>
                         </div>
                     </section>
@@ -200,28 +214,151 @@
     <!-- QUICK REFERENCE MODAL -->
     <div id="quick-ref-modal" class="modal-overlay">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeQuickRef()">×</button>
-            <h2 style="margin-bottom:1.5rem; color:var(--primary);">Quick Reference Tips</h2>
-
-            <div style="margin-bottom:1.5rem;">
-                <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">📐 Math: Key Formulas</h3>
-                <ul style="margin-left:1.5rem; color:var(--text-secondary);">
-                    <li><strong>Quadratic Formula:</strong> x = (-b ± √[b² - 4ac]) / 2a</li>
-                    <li><strong>Sum of Angles (Polygon):</strong> (n-2) × 180°</li>
-                    <li><strong>Probability:</strong> Desired Outcomes / Total Outcomes</li>
-                    <li><strong>Distance:</strong> Rate × Time</li>
-                </ul>
+            <div class="modal-header">
+                <h2 style="margin:0; font-size:1.5rem; color:var(--primary);">Quick Reference</h2>
+                <button class="modal-close" onclick="closeQuickRef()"
+                    style="font-size:2rem; line-height:0.5; position:static;">×</button>
             </div>
 
-            <div>
-                <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">📚 English: Analogy Types</h3>
-                <ul style="margin-left:1.5rem; color:var(--text-secondary);">
-                    <li><strong>Synonyms/Antonyms:</strong> e.g., Big : Small</li>
-                    <li><strong>Part to Whole:</strong> e.g., Finger : Hand</li>
-                    <li><strong>Cause & Effect:</strong> e.g., Rain : Flood</li>
-                    <li><strong>Degree:</strong> e.g., Warm : Hot</li>
-                </ul>
+            <!-- TABS -->
+            <div class="ref-layout">
+                <!-- SIDEBAR -->
+                <div class="ref-sidebar">
+                    <div class="ref-nav-header">TOPICS</div>
+                    <button class="ref-nav-item active" onclick="switchQuickRefTab('ref-polynomials')">
+                        <span class="icon">📝</span> Polynomials
+                    </button>
+                    <button class="ref-nav-item" onclick="switchQuickRefTab('ref-linear')">
+                        <span class="icon">📈</span> Linear Functions
+                    </button>
+                    <button class="ref-nav-item" onclick="switchQuickRefTab('ref-equation')">
+                        <span class="icon">✍️</span> Eq. of a Line
+                    </button>
+                    <button class="ref-nav-item" onclick="switchQuickRefTab('ref-geometry')">
+                        <span class="icon">📐</span> Geometry
+                    </button>
+                </div>
+
+                <!-- MAIN CONTENT -->
+                <div class="ref-main">
+
+                    <!-- POLYNOMIALS -->
+                    <div id="ref-polynomials" class="ref-section active">
+                        <h3 class="ref-title">Polynomial Functions</h3>
+
+                        <div class="ref-block">
+                            <h4>Standard Form</h4>
+                            <p>Terms are ordered by Degree (highest to lowest exponent).</p>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Degree & Leading Coefficient</h4>
+                            <div class="math-row">
+                                <span class="label">Degree ($n$):</span>
+                                <span class="value">Highest Exponent</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Leading Coeff ($a_n$):</span>
+                                <span class="value">Number attached to $x^n$</span>
+                            </div>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Factoring Rules</h4>
+                            <div class="math-box">
+                                $$a^2 - b^2 = (a-b)(a+b)$$
+                            </div>
+                            <div class="math-box">
+                                $$a^2 \pm 2ab + b^2 = (a \pm b)^2$$
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LINEAR -->
+                    <div id="ref-linear" class="ref-section" style="display:none;">
+                        <h3 class="ref-title">Linear Functions</h3>
+
+                        <div class="ref-block">
+                            <h4>Definitions</h4>
+                            <div class="math-row">
+                                <span class="label">Domain:</span> <span class="value">All inputs ($x$)</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Range:</span> <span class="value">All outputs ($y$)</span>
+                            </div>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Vertical Line Test</h4>
+                            <p class="highlight-text">A graph is a Function if no vertical line intersects it more than
+                                once.</p>
+                        </div>
+                    </div>
+
+                    <!-- EQUATION OF LINE -->
+                    <div id="ref-equation" class="ref-section" style="display:none;">
+                        <h3 class="ref-title">Equation of a Line</h3>
+
+                        <div class="ref-block">
+                            <h4>Slope Formula ($m$)</h4>
+                            <div class="math-box">
+                                $$m = \frac{y_2 - y_1}{x_2 - x_1}$$
+                            </div>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Forms</h4>
+                            <div class="math-row">
+                                <span class="label">Slope-Intercept:</span>
+                                <span class="value math-font">$y = mx + b$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Point-Slope:</span>
+                                <span class="value math-font">$y - y_1 = m(x - x_1)$</span>
+                            </div>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Special Lines</h4>
+                            <div class="math-row">
+                                <span class="label">Horizontal:</span>
+                                <span class="value math-font">$y = c$ ($m=0$)</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Vertical:</span>
+                                <span class="value math-font">$x = c$ ($m=$ undef)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GEOMETRY -->
+                    <div id="ref-geometry" class="ref-section" style="display:none;">
+                        <h3 class="ref-title">Geometry Concepts</h3>
+
+                        <div class="ref-block">
+                            <h4>Lines Relationship</h4>
+                            <div class="math-row">
+                                <span class="label">Parallel:</span>
+                                <span class="value math-font">$m_1 = m_2$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Perpendicular:</span>
+                                <span class="value math-font">$m_1 \cdot m_2 = -1$</span>
+                            </div>
+                        </div>
+
+                        <div class="ref-block">
+                            <h4>Distance Formula</h4>
+                            <div class="math-box">
+                                $$d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$$
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
+
         </div>
     </div>
 
