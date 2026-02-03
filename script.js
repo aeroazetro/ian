@@ -48,78 +48,14 @@ function renderMath() {
 // === IMPROVED QUICK REFERENCE ===
 function openQuickRef() {
     const modal = document.getElementById('quick-ref-modal');
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 style="margin:0; font-size:1.5rem;">📐 Geometry Cheat Sheet</h2>
-                <button class="modal-close" onclick="closeQuickRef()" style="font-size:2rem; line-height:0.5;">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="ref-container">
-                    <div id="ref-content-area" class="ref-content-area" style="width: 100%;">
-                        ${getRefContent('geometry')}
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
     modal.classList.add('active');
+    // Ensure MathJax renders if not already
     renderMath();
-}
-
-function switchRefTab(tab) {
-    activeRefTab = tab;
-    // Update Sidebar UI
-    document.querySelectorAll('.ref-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase().includes(tab === 'math' ? 'math' : 'verbal')) {
-            btn.classList.add('active');
-        }
-    });
-    // Update Content
-    const area = document.getElementById('ref-content-area');
-    area.innerHTML = getRefContent(tab);
-    renderMath();
-}
-
-function getRefContent(tab) {
-    return `
-        <div class="ref-grid">
-            <div class="ref-card">
-                <h4>Slope ($m$)</h4>
-                <div class="formula-box">$$m = \\frac{y_2 - y_1}{x_2 - x_1}$$</div>
-                <div class="formula-box">Rise over Run</div>
-            </div>
-            
-            <div class="ref-card">
-                <h4>Linear Equations</h4>
-                <div class="formula-box"><strong>Slope-Intercept:</strong> $y = mx + b$</div>
-                <div class="formula-box"><strong>Standard:</strong> $Ax + By = C$</div>
-            </div>
-
-            <div class="ref-card">
-                <h4>Parallel Lines</h4>
-                <ul>
-                    <li>Have the <strong>SAME</strong> slope.</li>
-                    <li>$m_1 = m_2$</li>
-                    <li>Never intersect.</li>
-                </ul>
-            </div>
-
-            <div class="ref-card">
-                <h4>Perpendicular Lines</h4>
-                <ul>
-                    <li>Slopes are <strong>negative reciprocals</strong>.</li>
-                    <li>$m_1 \\cdot m_2 = -1$</li>
-                    <li>Example: If $m = 2$, perpendicular $m = -\\frac{1}{2}$.</li>
-                </ul>
-            </div>
-        </div>
-    `;
 }
 
 function closeQuickRef() {
-    document.getElementById('quick-ref-modal').classList.remove('active');
+    const modal = document.getElementById('quick-ref-modal');
+    modal.classList.remove('active');
 }
 
 // === CORE NAVIGATION ===
@@ -159,8 +95,12 @@ function selectSubject(subject) {
     const testGrid = document.getElementById('test-grid');
     testGrid.innerHTML = '';
 
-    if (subject === 'linear_functions') {
-        document.getElementById('subject-title').textContent = 'Linear Functions';
+    if (subject === 'linear_functions' || subject === 'line_equation') {
+        const titles = {
+            'linear_functions': 'Linear Functions',
+            'line_equation': 'Equation of a Line & Graphing'
+        };
+        document.getElementById('subject-title').textContent = titles[subject];
 
         const emptyState = document.createElement('div');
         emptyState.style.gridColumn = "1 / -1";
@@ -177,8 +117,12 @@ function selectSubject(subject) {
         return;
     }
 
-    // Default Geometry / Lines Logic
-    document.getElementById('subject-title').textContent = 'Parallel & Perpendicular Lines';
+    // Dynamic Title Logic
+    const titles = {
+        'geometry': 'Parallel & Perpendicular Lines',
+        'polynomials': 'Polynomial Functions'
+    };
+    document.getElementById('subject-title').textContent = titles[subject] || 'Module Selection';
 
     // Group modules by difficulty
     const rawModules = window.questions[subject] || {};
@@ -229,8 +173,9 @@ function selectSubject(subject) {
             const card = document.createElement('div');
             card.className = 'card';
             card.style.padding = '1.5rem';
+            const icon = subject === 'polynomials' ? '✖️' : '📐';
             card.innerHTML = `
-                <div class="card-icon" style="margin-bottom:1rem; font-size:2.5rem;">📐</div>
+                <div class="card-icon" style="margin-bottom:1rem; font-size:2.5rem;">${icon}</div>
                 <h3 style="font-size:1.1rem;">${mod.title}</h3>
                 <p style="margin-bottom: 0.5rem; font-weight:600;">${mod.subtitle}</p>
                 <p style="margin-bottom: 1rem; font-size: 0.9rem;">${mod.description}</p>
@@ -493,6 +438,31 @@ window.onclick = function (event) {
     if (event.target === modal) {
         closeQuickRef();
     }
+}
+
+function switchQuickRefTab(tabId) {
+    // Hide all sections - using class toggle for animation support
+    document.querySelectorAll('.ref-section').forEach(el => {
+        if (el.id === tabId) {
+            el.classList.add('active');
+            el.style.display = 'block'; // Ensure display is set
+        } else {
+            el.classList.remove('active');
+            el.style.display = 'none';
+        }
+    });
+
+    // Update Sidebar Navigation
+    const buttons = document.querySelectorAll('.ref-nav-item');
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Ensure MathJax renders on the newly visible content
+    if (typeof renderMath === 'function') renderMath();
 }
 
 // SKIP LOGIC
