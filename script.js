@@ -3,6 +3,39 @@ let currentTest = 'module1';
 let currentQuestionIndex = 0;
 let score = 0;
 let activeRefTab = 'geometry';
+const SESSION_RATE = 650;
+const BILLING_PASSWORD = 'climb123'; // Change this value to update billing access password.
+let billingUnlocked = sessionStorage.getItem('billingUnlocked') === '1';
+let billingSessions = [];
+
+const BILLING_SESSION_CSV = `date,time,tutee,sessions,status
+2025-08-10,21:00,JC,1.0,Paid
+2025-08-17,20:00,JC,0.5,Paid
+2025-08-19,20:30,JC,1.0,Paid
+2025-08-24,21:30,JC,0.5,Paid
+2025-08-26,19:30,JC,1.0,Paid
+2025-08-31,20:30,JC,1.0,Paid
+2025-09-03,15:15,JC,1.0,Paid
+2025-09-07,20:30,JC,1.0,Paid
+2025-09-09,20:30,JC,1.0,Paid
+2025-09-14,20:30,JC,1.0,Paid
+2025-09-16,21:00,JC,0.5,Paid
+2025-09-21,21:15,JC,1.0,Paid
+2025-09-26,21:30,JC,1.0,Paid
+2025-09-30,21:45,JC,0.5,Paid
+2025-10-05,18:45,JC,0.67,Paid
+2025-10-07,20:30,JC,1.0,Paid
+2025-10-19,21:10,JC,1.0,Paid
+2025-10-20,12:00,Julia,0.67,Paid
+2025-10-27,12:00,Julia,1.0,Paid
+2025-10-28,21:00,JC,1.0,Paid
+2025-11-03,12:00,Julia,1.0,Unpaid
+2025-11-11,21:10,JC,1.0,Unpaid
+2025-11-16,20:30,JC,0.67,Unpaid
+2026-01-20,05:00,JC,1,Unpaid
+2026-01-24,22:30,JC,1,Unpaid
+2026-01-27,20:00,JC,1,Unpaid
+2026-02-04,20:00,JC,1,Unpaid`;
 
 // Theme Logic
 // 1. Check LocalStorage
@@ -20,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Script loaded successfully");
     const icon = document.getElementById('theme-icon');
     if (icon) icon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    billingSessions = parseBillingSessionsCSV(BILLING_SESSION_CSV);
+    renderBillingDashboard();
 });
 
 window.toggleTheme = function () {
@@ -31,6 +66,144 @@ window.toggleTheme = function () {
 
     const icon = document.getElementById('theme-icon');
     if (icon) icon.textContent = next === 'light' ? '🌙' : '☀️';
+}
+
+function parseBillingSessionsCSV(data) {
+    if (!data) return [];
+    const lines = data.trim().split('\n').slice(1);
+    return lines.map(line => {
+        const [date, time, tutee, sessions, status] = line.split(',');
+        const parsedSessions = Number.parseFloat(sessions);
+        return {
+            date: (date || '').trim(),
+            time: (time || '').trim(),
+            tutee: (tutee || '').trim(),
+            sessions: Number.isFinite(parsedSessions) ? parsedSessions : 0,
+            status: ((status || '').trim().toLowerCase() === 'paid') ? 'paid' : 'unpaid'
+        };
+    }).filter(item => item.date && item.time && item.tutee);
+}
+
+function formatPeso(amount) {
+    return `₱${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+function formatSessionCount(count) {
+    return `${count} session${count === 1 ? '' : 's'}`;
+}
+
+function setBillingPasswordError(message = '') {
+    const error = document.getElementById('billing-password-error');
+    if (!error) return;
+    if (message) {
+        error.textContent = message;
+        error.classList.remove('hidden');
+    } else {
+        error.classList.add('hidden');
+    }
+}
+
+function renderBillingList(targetId, sessions, emptyText) {
+    const list = document.getElementById(targetId);
+    if (!list) return;
+    list.innerHTML = '';
+
+    if (!sessions.length) {
+        const empty = document.createElement('div');
+        empty.className = 'billing-empty';
+        empty.textContent = emptyText;
+        list.appendChild(empty);
+        return;
+    }
+
+    const sorted = [...sessions].sort((a, b) => `${b.date} ${b.time}`.localeCompare(`${a.date} ${a.time}`));
+    sorted.forEach(item => {
+        const amount = item.sessions * SESSION_RATE;
+        const entry = document.createElement('div');
+        entry.className = `billing-item ${item.status}`;
+        entry.innerHTML = `
+            <div class="billing-item-top">
+                <span class="billing-item-date">${item.date} ${item.time}</span>
+                <span class="billing-status ${item.status}">${item.status.toUpperCase()}</span>
+            </div>
+            <div class="billing-item-bottom">
+                <span>${item.tutee} • ${formatSessionCount(item.sessions)}</span>
+                <strong>${formatPeso(amount)}</strong>
+            </div>
+        `;
+        list.appendChild(entry);
+    });
+}
+
+function renderBillingDashboard() {
+    if (!billingSessions.length) return;
+
+    const unpaidSessions = billingSessions.filter(item => item.status === 'unpaid');
+    const unpaidTotal = unpaidSessions.reduce((sum, item) => sum + (item.sessions * SESSION_RATE), 0);
+
+    const totalUnpaidEl = document.getElementById('billing-total-unpaid');
+    const unpaidCountEl = document.getElementById('billing-unpaid-count');
+    const totalLogsEl = document.getElementById('billing-total-logs');
+
+    if (totalUnpaidEl) totalUnpaidEl.textContent = formatPeso(unpaidTotal);
+    if (unpaidCountEl) unpaidCountEl.textContent = String(unpaidSessions.length);
+    if (totalLogsEl) totalLogsEl.textContent = String(billingSessions.length);
+
+    renderBillingList('billing-unpaid-list', unpaidSessions, 'No unpaid sessions right now.');
+    renderBillingList('billing-log-list', billingSessions, 'No session logs found.');
+}
+
+function showBillingPasswordModal() {
+    const modal = document.getElementById('billing-password-modal');
+    const input = document.getElementById('billing-password-input');
+    if (!modal) return;
+
+    setBillingPasswordError('');
+    modal.classList.remove('hidden');
+    setTimeout(() => modal.classList.add('active'), 10);
+    if (input) input.focus();
+}
+
+function closeBillingPasswordModal() {
+    const modal = document.getElementById('billing-password-modal');
+    const input = document.getElementById('billing-password-input');
+    if (!modal) return;
+
+    modal.classList.remove('active');
+    setTimeout(() => modal.classList.add('hidden'), 300);
+    if (input) input.value = '';
+    setBillingPasswordError('');
+}
+
+function submitBillingPassword() {
+    const input = document.getElementById('billing-password-input');
+    if (!input) return;
+
+    if (input.value === BILLING_PASSWORD) {
+        billingUnlocked = true;
+        sessionStorage.setItem('billingUnlocked', '1');
+        closeBillingPasswordModal();
+        renderBillingDashboard();
+        navTo('billing');
+    } else {
+        setBillingPasswordError('Incorrect password. Try again.');
+        input.focus();
+    }
+}
+
+function handleBillingPasswordKeydown(event) {
+    if (event.key === 'Enter') {
+        submitBillingPassword();
+    }
+}
+
+function openBilling() {
+    if (!billingUnlocked) {
+        showBillingPasswordModal();
+        return;
+    }
+    renderBillingDashboard();
+    navTo('billing');
 }
 
 function renderMath() {
@@ -120,7 +293,8 @@ function selectSubject(subject) {
     // Dynamic Title Logic
     const titles = {
         'geometry': 'Parallel & Perpendicular Lines',
-        'polynomials': 'Polynomial Functions'
+        'polynomials': 'Polynomial Functions',
+        'circles': 'Circles'
     };
     document.getElementById('subject-title').textContent = titles[subject] || 'Module Selection';
 
@@ -173,7 +347,12 @@ function selectSubject(subject) {
             const card = document.createElement('div');
             card.className = 'card';
             card.style.padding = '1.5rem';
-            const icon = subject === 'polynomials' ? '✖️' : '📐';
+            const subjectIcons = {
+                polynomials: '✖️',
+                geometry: '📐',
+                circles: '⭕'
+            };
+            const icon = subjectIcons[subject] || '📘';
             card.innerHTML = `
                 <div class="card-icon" style="margin-bottom:1rem; font-size:2.5rem;">${icon}</div>
                 <h3 style="font-size:1.1rem;">${mod.title}</h3>
@@ -194,7 +373,12 @@ function startTest(testKey) {
     currentTest = testKey;
     currentQuestionIndex = 0;
     score = 0;
-    document.getElementById('quiz-subject-label').textContent = 'Geometry / Lines';
+    const subjectLabels = {
+        geometry: 'Geometry / Lines',
+        polynomials: 'Polynomials',
+        circles: 'Geometry / Circles'
+    };
+    document.getElementById('quiz-subject-label').textContent = subjectLabels[currentSubject] || 'Subject';
     navTo('quiz');
     loadQuestion();
 }
@@ -434,9 +618,13 @@ function finishExam() {
 
 // Window click for modal close
 window.onclick = function (event) {
-    const modal = document.getElementById('quick-ref-modal');
-    if (event.target === modal) {
+    const quickRefModal = document.getElementById('quick-ref-modal');
+    const billingModal = document.getElementById('billing-password-modal');
+    if (event.target === quickRefModal) {
         closeQuickRef();
+    }
+    if (event.target === billingModal) {
+        closeBillingPasswordModal();
     }
 }
 
@@ -500,17 +688,5 @@ function confirmSkip() {
         loadQuestion();
     } else {
         finishExam();
-    }
-}
-
-// TOGGLE THEME
-function toggleTheme() {
-    const body = document.body;
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
     }
 }
