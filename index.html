@@ -27,6 +27,7 @@
             <nav class="site-nav">
                 <a onclick="scrollToSection('subject-list')">Modules</a>
                 <a onclick="openQuickRef()">Quick Reference</a>
+                <a onclick="openBilling()">Billing</a>
                 <a href="https://aeroazetro.github.io/portfolio/" target="_blank">Tutor</a>
                 <a href="https://www.figma.com/board/5ARdN53DoMWxWeNRk2jPqd/ian?node-id=0-1&t=1V2WYpVSJ9FpJnUj-1"
                     target="_blank">Whiteboard</a>
@@ -121,6 +122,13 @@
                                 <p>Slopes, Intercepts, Linear Equations, and Cartesian Plane Geometry.</p>
                                 <span class="badge">9 Modules Available</span>
                             </div>
+
+                            <div class="card" onclick="selectSubject('circles')">
+                                <div class="card-icon">⭕</div>
+                                <h3>Circles</h3>
+                                <p>Chords, tangents, secants, arcs, and central/inscribed angles.</p>
+                                <span class="badge">4 Modules Available</span>
+                            </div>
                         </div>
                     </section>
 
@@ -178,6 +186,64 @@
             </div>
         </section>
 
+        <!-- BILLING DASHBOARD -->
+        <section id="billing" class="view-section hidden container">
+            <div style="margin-top: 2rem;">
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;"
+                    onclick="navTo('landing')">← Back to Home</button>
+            </div>
+
+            <div class="section-title" style="margin-top: 1rem;">
+                <h1>Billing Dashboard</h1>
+                <p style="color: var(--text-secondary);">Track unpaid amounts and full payment logs.</p>
+            </div>
+
+            <div class="billing-summary-grid">
+                <div class="billing-summary-card">
+                    <div class="summary-label">Total Unpaid Amount</div>
+                    <div id="billing-total-unpaid" class="summary-value">₱0</div>
+                </div>
+                <div class="billing-summary-card">
+                    <div class="summary-label">Unpaid Sessions</div>
+                    <div id="billing-unpaid-count" class="summary-value">0</div>
+                </div>
+                <div class="billing-summary-card">
+                    <div class="summary-label">All Logged Sessions</div>
+                    <div id="billing-total-logs" class="summary-value">0</div>
+                </div>
+            </div>
+
+            <div class="card-grid billing-grid">
+                <div class="card billing-card static-card">
+                    <h3>Payment Needed</h3>
+                    <p style="margin-bottom: 1rem;">Current unpaid sessions.</p>
+                    <div id="billing-unpaid-list" class="billing-list"></div>
+                </div>
+
+                <div class="card billing-card static-card">
+                    <h3>Session Logs</h3>
+                    <p style="margin-bottom: 1rem;">Complete payment history (paid + unpaid).</p>
+                    <div id="billing-log-list" class="billing-list"></div>
+                </div>
+            </div>
+
+            <div class="card static-card billing-methods-card">
+                <h3>Payment Methods</h3>
+                <div class="payment-methods-grid">
+                    <div class="payment-method">
+                        <strong>GoTyme Bank</strong>
+                        <p>0148 5367 2011</p>
+                        <p>Israel John Penalosa</p>
+                    </div>
+                    <div class="payment-method">
+                        <strong>GCash</strong>
+                        <p>0966 253 5576</p>
+                        <p>Rachel Penalosa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SKIP WARNING MODAL -->
         <div id="skip-modal" class="modal-overlay hidden" style="z-index: 200;">
             <div class="modal-content" style="max-width: 400px; height: auto; text-align: center; padding: 2rem;">
@@ -190,6 +256,23 @@
                     <button class="btn btn-primary"
                         style="background-color: var(--warning); border-color: var(--warning);"
                         onclick="confirmSkip()">Skip Anyway</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BILLING PASSWORD MODAL -->
+        <div id="billing-password-modal" class="modal-overlay hidden" style="z-index: 250;">
+            <div class="modal-content billing-password-content">
+                <h3 style="margin-bottom: 0.75rem;">Billing Access</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter password to view payment records.
+                </p>
+                <input id="billing-password-input" type="password" class="billing-password-input"
+                    placeholder="Enter password" onkeydown="handleBillingPasswordKeydown(event)">
+                <div id="billing-password-error" class="billing-password-error hidden">Incorrect password. Try again.
+                </div>
+                <div class="billing-password-actions">
+                    <button class="btn btn-secondary billing-action-btn" onclick="closeBillingPasswordModal()">Cancel</button>
+                    <button class="btn btn-primary billing-action-btn" onclick="submitBillingPassword()">Unlock</button>
                 </div>
             </div>
         </div>
@@ -232,10 +315,10 @@
                         <span class="icon">📈</span> Linear Functions
                     </button>
                     <button class="ref-nav-item" onclick="switchQuickRefTab('ref-equation')">
-                        <span class="icon">✍️</span> Eq. of a Line
+                        <span class="icon">✍️</span> Eq. of Line & Graph
                     </button>
                     <button class="ref-nav-item" onclick="switchQuickRefTab('ref-geometry')">
-                        <span class="icon">📐</span> Geometry
+                        <span class="icon">📐</span> Parallel & Perp.
                     </button>
                 </div>
 
@@ -247,30 +330,42 @@
                         <h3 class="ref-title">Polynomial Functions</h3>
 
                         <div class="ref-block">
-                            <h4>Standard Form</h4>
-                            <p>Terms are ordered by Degree (highest to lowest exponent).</p>
+                            <h4>Laws of Exponents</h4>
+                            <div class="math-row">
+                                <span class="label">Product Rule:</span> <span class="value math-font">$x^a \cdot x^b =
+                                    x^{a+b}$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Power Rule:</span> <span class="value math-font">$(x^a)^b =
+                                    x^{ab}$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Quotient Rule:</span> <span class="value math-font">$\frac{x^a}{x^b}
+                                    = x^{a-b}$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Zero Exponent:</span> <span class="value math-font">$x^0 = 1$</span>
+                            </div>
                         </div>
 
                         <div class="ref-block">
-                            <h4>Degree & Leading Coefficient</h4>
-                            <div class="math-row">
-                                <span class="label">Degree ($n$):</span>
-                                <span class="value">Highest Exponent</span>
+                            <h4>Special Products</h4>
+                            <div class="math-box">
+                                $$(a+b)^2 = a^2 + 2ab + b^2$$
                             </div>
-                            <div class="math-row">
-                                <span class="label">Leading Coeff ($a_n$):</span>
-                                <span class="value">Number attached to $x^n$</span>
+                            <div class="math-box">
+                                $$(a-b)(a+b) = a^2 - b^2$$
+                            </div>
+                            <div class="math-box">
+                                $$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$$
                             </div>
                         </div>
 
                         <div class="ref-block">
-                            <h4>Factoring Rules</h4>
-                            <div class="math-box">
-                                $$a^2 - b^2 = (a-b)(a+b)$$
-                            </div>
-                            <div class="math-box">
-                                $$a^2 \pm 2ab + b^2 = (a \pm b)^2$$
-                            </div>
+                            <h4>Factoring Techniques</h4>
+                            <p><strong>1. Common Monomial Factor (CMF):</strong> Factor out GCF first.<br>
+                                $4x^2 + 8x \rightarrow 4x(x+2)$</p>
+                            <p><strong>2. Difference of Squares:</strong> $x^2 - 16 \rightarrow (x-4)(x+4)$</p>
                         </div>
                     </div>
 
@@ -279,35 +374,43 @@
                         <h3 class="ref-title">Linear Functions</h3>
 
                         <div class="ref-block">
-                            <h4>Definitions</h4>
+                            <h4>Slope Behavior</h4>
                             <div class="math-row">
-                                <span class="label">Domain:</span> <span class="value">All inputs ($x$)</span>
+                                <span class="label">Positive ($m > 0$):</span> <span class="value">Rises to Right
+                                    ↗</span>
                             </div>
                             <div class="math-row">
-                                <span class="label">Range:</span> <span class="value">All outputs ($y$)</span>
+                                <span class="label">Negative ($m < 0$):</span> <span class="value">Falls to Right
+                                            ↘</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Zero ($m = 0$):</span> <span class="value">Horizontal ➡</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Undefined:</span> <span class="value">Vertical ⬆</span>
                             </div>
                         </div>
 
                         <div class="ref-block">
+                            <h4>Intercepts</h4>
+                            <p class="highlight-text"><strong>$x$-intercept:</strong> Set $y=0$ and solve for $x$.
+                                (Where graph crosses x-axis)</p>
+                            <p class="highlight-text"><strong>$y$-intercept:</strong> Set $x=0$ and solve for $y$.
+                                (Where graph crosses y-axis)</p>
+                        </div>
+
+                        <div class="ref-block">
                             <h4>Vertical Line Test</h4>
-                            <p class="highlight-text">A graph is a Function if no vertical line intersects it more than
-                                once.</p>
+                            <p>A graph is a function only if any vertical line touches it at most once.</p>
                         </div>
                     </div>
 
                     <!-- EQUATION OF LINE -->
                     <div id="ref-equation" class="ref-section" style="display:none;">
-                        <h3 class="ref-title">Equation of a Line</h3>
+                        <h3 class="ref-title">Equation of a Line and Graphing</h3>
 
                         <div class="ref-block">
-                            <h4>Slope Formula ($m$)</h4>
-                            <div class="math-box">
-                                $$m = \frac{y_2 - y_1}{x_2 - x_1}$$
-                            </div>
-                        </div>
-
-                        <div class="ref-block">
-                            <h4>Forms</h4>
+                            <h4>Forms of Equation</h4>
                             <div class="math-row">
                                 <span class="label">Slope-Intercept:</span>
                                 <span class="value math-font">$y = mx + b$</span>
@@ -316,24 +419,27 @@
                                 <span class="label">Point-Slope:</span>
                                 <span class="value math-font">$y - y_1 = m(x - x_1)$</span>
                             </div>
+                            <div class="math-row">
+                                <span class="label">Standard Form:</span>
+                                <span class="value math-font">$Ax + By = C$</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="label">Two-Point:</span>
+                                <span class="value math-font">$y-y_1 = \frac{y_2-y_1}{x_2-x_1}(x-x_1)$</span>
+                            </div>
                         </div>
 
                         <div class="ref-block">
-                            <h4>Special Lines</h4>
-                            <div class="math-row">
-                                <span class="label">Horizontal:</span>
-                                <span class="value math-font">$y = c$ ($m=0$)</span>
-                            </div>
-                            <div class="math-row">
-                                <span class="label">Vertical:</span>
-                                <span class="value math-font">$x = c$ ($m=$ undef)</span>
+                            <h4>Slope Formula ($m$)</h4>
+                            <div class="math-box">
+                                $$m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{Rise}}{\text{Run}}$$
                             </div>
                         </div>
                     </div>
 
                     <!-- GEOMETRY -->
                     <div id="ref-geometry" class="ref-section" style="display:none;">
-                        <h3 class="ref-title">Geometry Concepts</h3>
+                        <h3 class="ref-title">Parallel & Perpendicular Lines</h3>
 
                         <div class="ref-block">
                             <h4>Lines Relationship</h4>
@@ -346,6 +452,8 @@
                                 <span class="value math-font">$m_1 \cdot m_2 = -1$</span>
                             </div>
                         </div>
+
+
 
                         <div class="ref-block">
                             <h4>Distance Formula</h4>
