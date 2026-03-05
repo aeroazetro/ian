@@ -357,6 +357,160 @@ body {
   margin-top: auto;
 }
 
+.static-card {
+  cursor: default;
+}
+
+.static-card:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+  border-color: var(--border);
+}
+
+.billing-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.billing-summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.summary-value {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.billing-grid {
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.billing-card {
+  padding: 1.5rem;
+}
+
+.billing-list {
+  max-height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.25rem;
+}
+
+.billing-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem;
+}
+
+.billing-item.paid {
+  border-left-color: var(--success);
+}
+
+.billing-item.unpaid {
+  border-left-color: var(--error);
+}
+
+.billing-item-top,
+.billing-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.billing-item-top {
+  margin-bottom: 0.3rem;
+}
+
+.billing-item-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.billing-item-bottom {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.billing-status {
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+}
+
+.billing-status.paid {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success);
+}
+
+.billing-status.unpaid {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--error);
+}
+
+.billing-empty {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.billing-methods-card {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.payment-method {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.payment-method strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.payment-method p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 /* ===== QUIZ INTERFACE ===== */
 .quiz-container {
   max-width: 800px;
@@ -772,6 +926,67 @@ body {
   color: var(--text-secondary);
 }
 
+.billing-password-content {
+  max-width: 420px;
+  width: 92%;
+  height: auto;
+  padding: 1.5rem;
+  overflow: visible;
+}
+
+.billing-password-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.billing-password-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.billing-password-error {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.billing-password-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.billing-action-btn {
+  padding: 0.55rem 1rem;
+}
+
+.billing-password-actions .btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.billing-password-actions .btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.billing-password-actions .btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.billing-password-actions .btn-secondary:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
 /* Figure Questions */
 .question-figure {
   display: block;
@@ -893,6 +1108,8 @@ body {
   .site-nav {
     gap: 0.5rem !important;
     /* Drastically reduce gap */
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .site-nav a {
@@ -1047,6 +1264,28 @@ body {
 
   .modal-close {
     font-size: 1.25rem;
+  }
+
+  .billing-summary-grid,
+  .billing-grid,
+  .payment-methods-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .billing-list {
+    max-height: 360px;
+  }
+
+  .summary-value {
+    font-size: 1.4rem;
+  }
+
+  .billing-password-actions {
+    flex-direction: column-reverse;
+  }
+
+  .billing-action-btn {
+    width: 100%;
   }
 
   /* Quick Reference - Stacked */
